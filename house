@@ -1,0 +1,75 @@
+#include "SFML/Graphics.hpp"
+
+int main() {
+
+    //int Randal = sf::Randomizer::Random(0, 100);
+    sf::RenderWindow renderWindow(sf::VideoMode(500, 500), "Wowie! A Circle!");
+
+    sf::Event event;
+    sf::RectangleShape Rect1shape;
+    Rect1shape.setSize(sf::Vector2f(100, 100));
+    Rect1shape.setFillColor(sf::Color::Yellow);
+    Rect1shape.setPosition(200, 200);
+
+    sf::RectangleShape Rect2shape;
+    Rect2shape.setSize(sf::Vector2f(30, 50));
+    Rect2shape.setFillColor(sf::Color::Red);
+    Rect2shape.setPosition(250, 250);
+
+    sf::CircleShape triangle(75, 3);
+    triangle.setFillColor(sf::Color::Blue);
+    triangle.setPosition(180, 100);
+
+    sf::CircleShape circleShape(5);
+    circleShape.setFillColor(sf::Color::White);
+    circleShape.setPosition(265.0f, 270.0f);
+
+    sf::RectangleShape Rect3shape;
+    Rect3shape.setSize(sf::Vector2f(20, 20));
+    Rect3shape.setFillColor(sf::Color::Cyan);
+    Rect3shape.setPosition(225, 250);
+
+    sf::CircleShape circleShape2(2); //radius of circle
+    circleShape2.setFillColor(sf::Color::Yellow); //hmm, what could this do?
+    circleShape2.setPosition(170.0f, 200.0f);
+
+    sf::RectangleShape Rect4shape;
+    Rect4shape.setSize(sf::Vector2f(1, 10));
+    Rect4shape.setFillColor(sf::Color::Green);
+    Rect4shape.setPosition(170 , 200);
+
+    sf::CircleShape circle3Shape(2); //radius of circle
+    circle3Shape.setFillColor(sf::Color::White); //hmm, what could this do?
+    circle3Shape.setPosition(168.0f , 200.0f);
+    sf::CircleShape circle4Shape(2); //radius of circle
+    circle4Shape.setFillColor(sf::Color::White); //hmm, what could this do?
+    circle4Shape.setPosition(172.0f , 200.0f);
+    sf::CircleShape circle5Shape(2); //radius of circle
+    circle5Shape.setFillColor(sf::Color::White); //hmm, what could this do?
+    circle5Shape.setPosition(170.0f , 202.0f);
+
+
+    //keep window open until user shuts it down
+    while (renderWindow.isOpen()) {
+        while (renderWindow.pollEvent(event)) {
+            if (event.type == sf::Event::EventType::Closed)
+                renderWindow.close();
+        }
+
+        //render section-----------------------------------------
+        renderWindow.clear();
+       
+        renderWindow.draw(Rect1shape);
+        renderWindow.draw(Rect2shape);
+        renderWindow.draw(triangle);
+        renderWindow.draw(circleShape);
+        renderWindow.draw(Rect3shape);
+        renderWindow.draw(circle3Shape);
+        renderWindow.draw(circle4Shape);
+        renderWindow.draw(circle5Shape);
+        renderWindow.draw(Rect4shape);
+        renderWindow.draw(circleShape2);
+
+        renderWindow.display();
+    }
+}
