@@ -1,0 +1,178 @@
+#include "SFML/Graphics.hpp"
+
+int main() {
+
+    //int Randal = sf::Randomizer::Random(0, 100);
+    sf::RenderWindow renderWindow(sf::VideoMode(500, 500), "Wowie! A Garden!");
+
+    sf::Event event;
+
+    //keep window open until user shuts it down
+    while (renderWindow.isOpen()) {
+        while (renderWindow.pollEvent(event)) {
+            if (event.type == sf::Event::EventType::Closed)
+                renderWindow.close();
+        }
+
+        //render section-----------------------------------------
+        renderWindow.clear();
+
+        for (int i = 0; i <= 500; i += 50) {
+            sf::Event event;
+            sf::RectangleShape Rect1shape;
+            Rect1shape.setSize(sf::Vector2f(5, 55));
+            Rect1shape.setFillColor(sf::Color::Green);
+            Rect1shape.setPosition(15 + i, 200);
+
+            renderWindow.draw(Rect1shape);
+        }
+        for (int i = 0; i <= 500; i += 50) {
+            sf::CircleShape circle2Shape(10); //radius of circle
+            circle2Shape.setFillColor(sf::Color::Red); //hmm, what could this do?
+            circle2Shape.setPosition(20.0f + i, 200.0f);
+
+            renderWindow.draw(circle2Shape);
+        }
+        for (int i = 0; i <= 500; i += 50) {
+            sf::CircleShape circle2Shape(10); //radius of circle
+            circle2Shape.setFillColor(sf::Color::Red); //hmm, what could this do?
+            circle2Shape.setPosition(10.0f + i, 190.0f);
+
+            renderWindow.draw(circle2Shape);
+        }
+        for (int i = 0; i <= 500; i += 50) {
+            sf::CircleShape circle2Shape(10); //radius of circle
+            circle2Shape.setFillColor(sf::Color::Red); //hmm, what could this do?
+            circle2Shape.setPosition(0.0f + i, 200.0f);
+
+            renderWindow.draw(circle2Shape);
+        }
+        for (int i = 0; i <= 500; i += 50) {
+            sf::CircleShape circle2Shape(10); //radius of circle
+            circle2Shape.setFillColor(sf::Color::Red); //hmm, what could this do?
+            circle2Shape.setPosition(10.0f + i, 210.0f);
+
+            renderWindow.draw(circle2Shape);
+        }
+        for (int i = 0; i <= 500; i += 50) {
+
+
+            sf::CircleShape circleShape(10); //radius of circle
+            circleShape.setFillColor(sf::Color::Yellow); //hmm, what could this do?
+            circleShape.setPosition(10.0f + i, 200.0f);
+
+
+            renderWindow.draw(circleShape);
+        }
+
+        for (int i = 0; i <= 500; i += 50) {
+            sf::Event event;
+            sf::RectangleShape Rect1shape;
+            Rect1shape.setSize(sf::Vector2f(5, 55));
+            Rect1shape.setFillColor(sf::Color::Green);
+            Rect1shape.setPosition(15+i, 250);
+
+            renderWindow.draw(Rect1shape);
+        }
+        for (int i = 0; i <= 500; i += 50) {
+            sf::CircleShape circle2Shape(10); //radius of circle
+            circle2Shape.setFillColor(sf::Color::White); //hmm, what could this do?
+            circle2Shape.setPosition(20.0f + i, 250.0f);
+
+            renderWindow.draw(circle2Shape);
+        }
+        for (int i = 0; i <= 500; i += 50) {
+            sf::CircleShape circle2Shape(10); //radius of circle
+            circle2Shape.setFillColor(sf::Color::White); //hmm, what could this do?
+            circle2Shape.setPosition(10.0f + i, 240.0f);
+
+            renderWindow.draw(circle2Shape);
+        }
+        for (int i = 0; i <= 500; i += 50) {
+            sf::CircleShape circle2Shape(10); //radius of circle
+            circle2Shape.setFillColor(sf::Color::White); //hmm, what could this do?
+            circle2Shape.setPosition(0.0f + i, 250.0f);
+
+            renderWindow.draw(circle2Shape);
+        }
+        for (int i = 0; i <= 500; i += 50) {
+            sf::CircleShape circle2Shape(10); //radius of circle
+            circle2Shape.setFillColor(sf::Color::White); //hmm, what could this do?
+            circle2Shape.setPosition(10.0f + i, 260.0f);
+
+            renderWindow.draw(circle2Shape);
+        }
+        for (int i = 0; i <= 500; i += 50) {
+
+
+            sf::CircleShape circleShape(10); //radius of circle
+            circleShape.setFillColor(sf::Color::Yellow); //hmm, what could this do?
+            circleShape.setPosition(10.0f + i, 250.0f);
+
+
+            renderWindow.draw(circleShape);
+        }
+
+
+
+
+
+       
+
+
+
+
+        for (int i = 0; i <= 500; i += 50) {
+            sf::Event event;
+            sf::RectangleShape Rect1shape;
+            Rect1shape.setSize(sf::Vector2f(5, 55));
+            Rect1shape.setFillColor(sf::Color::Green);
+            Rect1shape.setPosition(15 + i, 300);
+
+            renderWindow.draw(Rect1shape);
+        }
+        for (int i = 0; i <= 500; i += 50) {
+            sf::CircleShape circle2Shape(10); //radius of circle
+            circle2Shape.setFillColor(sf::Color::Magenta); //hmm, what could this do?
+            circle2Shape.setPosition(20.0f + i, 300.0f);
+
+            renderWindow.draw(circle2Shape);
+        }
+        for (int i = 0; i <= 500; i += 50) {
+            sf::CircleShape circle2Shape(10); //radius of circle
+            circle2Shape.setFillColor(sf::Color::Magenta); //hmm, what could this do?
+            circle2Shape.setPosition(10.0f + i, 290.0f);
+
+            renderWindow.draw(circle2Shape);
+        }
+        for (int i = 0; i <= 500; i += 50) {
+            sf::CircleShape circle2Shape(10); //radius of circle
+            circle2Shape.setFillColor(sf::Color::Magenta); //hmm, what could this do?
+            circle2Shape.setPosition(0.0f + i, 300.0f);
+
+            renderWindow.draw(circle2Shape);
+        }
+        for (int i = 0; i <= 500; i += 50) {
+            sf::CircleShape circle2Shape(10); //radius of circle
+            circle2Shape.setFillColor(sf::Color::Magenta); //hmm, what could this do?
+            circle2Shape.setPosition(10.0f + i, 310.0f);
+
+            renderWindow.draw(circle2Shape);
+        }
+        for (int i = 0; i <= 500; i += 50) {
+
+
+            sf::CircleShape circleShape(10); //radius of circle
+            circleShape.setFillColor(sf::Color::Yellow); //hmm, what could this do?
+            circleShape.setPosition(10.0f + i, 300.0f);
+
+
+            renderWindow.draw(circleShape);
+        }  
+
+
+
+
+        renderWindow.display();
+    }
+}
