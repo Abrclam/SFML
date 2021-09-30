@@ -1,0 +1,118 @@
+#include<iostream>
+#include <string>
+using namespace std;
+
+
+#include "SFML/Graphics.hpp"
+
+
+
+int main() {
+    string input;
+    string input1;
+    string input2;
+    string input3;
+    int familguy = 0;
+    bool notyes = !false;
+    //game set up (you'll need these two lines in every game)
+    
+    
+    while (notyes) {
+        std::cout << "Which family guy are you??" << endl;
+        std::cout << "Are you Peter??????????" << endl;
+        cin >> input;
+
+        if (input.compare("yes") == 0 || input.compare("Yes") == 0) {
+            break;
+        }
+
+        familguy++;
+        std::cout << "Are you Chris??" << endl;
+        std::cout << "I'm already chris you can't be Chris" << endl;
+        std::cout << "Are you Meg?" << endl;
+        cin >> input;
+        if (input.compare("yes") == 0 || input.compare("Yes") == 0) {
+            break;
+        }
+        familguy++;
+
+        std::cout << "Are you the redhead mom???????" << endl;
+        cin >> input;
+        if (input.compare("yes") == 0 || input.compare("Yes") == 0) {
+            break;
+        }
+        familguy++;
+
+        std::cout << "Are you a dog" << endl;
+        cin >> input;
+        if (input.compare("yes") == 0 || input.compare("Yes") == 0) {
+            break;
+        }
+
+
+    }
+    
+
+    //################### HOLD ONTO YOUR BUTTS, ITS THE GAME LOOP###############################################################
+    sf::RenderWindow renderWindow(sf::VideoMode(500, 500), "loading images"); //set up screen
+    sf::Event event; //set up event queue
+
+    //Here's how to load an image: clicke file->save as to see where to store "dog.png"
+    sf::Texture img1;
+    if (!img1.loadFromFile("peter.png"))return 0;
+   sf::Sprite pic1;
+    pic1.setTexture(img1);
+
+    sf::Texture img2;
+    if (!img2.loadFromFile("meg.png"))return 0;
+    sf::Sprite pic2;
+    pic2.setTexture(img2);
+
+    sf::Texture img3;
+    if (!img3.loadFromFile("lois.png"))return 0;
+    sf::Sprite pic3;
+    pic3.setTexture(img3);
+
+    sf::Texture img4;
+    if (!img4.loadFromFile("brian.png"))return 0;
+    sf::Sprite pic4;
+    pic4.setTexture(img4);
+    while (renderWindow.isOpen()) {//keep window open until user shuts it down
+
+        while (renderWindow.pollEvent(event)) { //look for events-----------------------
+
+            //this checks if the user has clicked the little "x" button in the top right corner
+            if (event.type == sf::Event::EventType::Closed)
+                renderWindow.close();
+
+
+
+        }//end event loop---------------------------------------------------------------
+
+
+
+        //render section-----------------------------------------
+        renderWindow.clear(); //wipes screen, without this things smear
+
+        if (familguy==0) {
+            renderWindow.draw(pic1); //loads background image: make sure this goes first or it will cover other stuff!
+            std::cout << "You are peter" << endl;
+        }
+        if (familguy == 1) {
+            renderWindow.draw(pic2);
+            std::cout << "hehehehheheheheh shut up Meg" << endl;
+        }
+        if (familguy == 2) {
+            renderWindow.draw(pic3);
+            std::cout << "Hi Lois" << endl;
+        }
+        if (familguy == 3) {
+            renderWindow.draw(pic4);
+            std::cout << "How are you doing this quiz you are a dog" << endl;
+        }
+        renderWindow.display(); //flips memory drawings onto screen
+
+    }//######################## end game loop ###################################################################################
+
+    std::cout << "goodbye!" << endl;
+}
