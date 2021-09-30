@@ -1,0 +1,79 @@
+#include<iostream>
+using namespace std;
+
+
+#include "SFML/Graphics.hpp"
+
+int main() {
+
+    //game set up (you'll need these two lines in every game)
+    sf::RenderWindow renderWindow(sf::VideoMode(500, 500), "Pong Paddle"); //set up screen
+    sf::Event event; //set up event queue
+    renderWindow.setFramerateLimit(60);
+
+    //paddle1 set up
+    sf::RectangleShape paddle1(sf::Vector2f(20.0f, 100.0f));
+    sf::RectangleShape paddle2(sf::Vector2f(20.0f, 100.0f));
+    //hehe ball
+    sf::RectangleShape ball(sf::Vector2f(20.0f, 20.0f));
+    paddle1.setFillColor(sf::Color::Magenta); //other colors: https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Color.php
+    paddle1.setPosition(50.0f, 250.0f); //set position: this is where the top left corner will be
+    paddle2.setFillColor(sf::Color::Red); 
+    paddle2.setPosition(430.0f, 250.0f);
+
+    ball.setFillColor(sf::Color::Green);
+    ball.setPosition(245.0f, 245.0f);
+    int ballXVel = 5;
+    int ballYVel = 5;
+
+    //################### HOLD ONTO YOUR BUTTS, ITS THE GAME LOOP###############################################################
+    while (renderWindow.isOpen()) {//keep window open until user shuts it down
+        while (renderWindow.pollEvent(event)) { //look for events
+
+            
+
+            //this checks if the user has clicked the little "x" button in the top right corner
+            if (event.type == sf::Event::EventType::Closed)
+                renderWindow.close();
+
+            
+
+        }
+        ball.move(ballXVel, ballYVel);
+        if (ball.getPosition().x > 480 || ball.getPosition().x < 0)
+            ballXVel *= -1;
+        if (ball.getPosition().y > 480 || ball.getPosition().y < 0)
+            ballYVel *= -1;
+        if (ball.getPosition().x > paddle1.getPosition().x && ball.getPosition().x < paddle1.getPosition().x + 20 && ball.getPosition().y > paddle1.getPosition().y && ball.getPosition().y < paddle1.getPosition().y + 100)
+            ballXVel *= -1;
+        if (ball.getPosition().x+20 > paddle2.getPosition().x && ball.getPosition().x < paddle2.getPosition().x && ball.getPosition().y > paddle2.getPosition().y && ball.getPosition().y < paddle2.getPosition().y + 100)
+            ballXVel *= -1;
+        //KEYBOARD INPUT (just one key to start
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) { //checks if "W" is pressed
+            paddle1.move(0, -5); //move the rectangle 5 pixels UP on the y axis
+            cout << "rectangle moving up" << endl; //for Mo's testing, you can take this out
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) { //checks if "W" is pressed
+            paddle1.move(0, +5); //move the rectangle 5 pixels UP on the y axis
+            cout << "rectangle moving down" << endl; //for Mo's testing, you can take this out
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) { //checks if "W" is pressed
+            paddle2.move(0, -5); //move the rectangle 5 pixels UP on the y axis
+            cout << "rectangle moving down" << endl; //for Mo's testing, you can take this out
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) { //checks if "W" is pressed
+            paddle2.move(0, +5); //move the rectangle 5 pixels UP on the y axis
+            cout << "rectangle moving down" << endl; //for Mo's testing, you can take this out
+        }
+
+        //render section-----------------------------------------
+        renderWindow.clear(); //wipes screen, without this things smear
+        renderWindow.draw(paddle1); //you gotta drew each object
+        renderWindow.draw(paddle2);
+        renderWindow.draw(ball);
+        renderWindow.display(); //flips memory drawings onto screen
+
+    }//######################## end game loop ###################################################################################
+
+    cout << "goodbye!" << endl;
+}
