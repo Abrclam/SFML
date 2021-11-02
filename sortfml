@@ -1,0 +1,113 @@
+#include <iostream>
+using namespace std;
+#include <random>
+#include <ctime>
+#include "SFML/Graphics.hpp"
+
+const int height = 400;
+const int width = 400;
+
+
+void Sort(int sort[], int n)
+{
+    bool flip = true;
+    int start = 0;
+    int end = n - 1;
+
+    while (flip)
+    {
+
+        flip = false;
+        for (int i = start; i < end; ++i)
+        {
+            if (sort[i] > sort[i + 1]) {
+                swap(sort[i], sort[i + 1]);
+                flip = true;
+            }
+            else if (sort[i] == sort[i + 1]) {
+                swap(sort[i], sort[i + 1]);
+                flip = true;
+            }
+        }
+        if (!flip)
+            break;
+        flip = false;
+        --end;
+        for (int i = end - 1; i >= start; --i)
+        {
+            if (sort[i] > sort[i + 1]) {
+                swap(sort[i], sort[i + 1]);
+                flip = true;
+            }
+            else if (sort[i] == sort[i + 1]) {
+                swap(sort[i], sort[i + 1]);
+                flip = true;
+            }
+        }
+        ++start;
+    }
+}
+void printArray(int sort[], int half)
+{
+    for (int i = 0; i < half; i++)
+        cout << sort[i] << endl;
+
+}
+int main() {
+    const int size = 100;
+    srand(time(NULL));
+    int rectW;
+    int rectH;
+    int xpos = 0;
+    sf::RenderWindow renderWindow(sf::VideoMode(800, 800), "Sorter");
+
+    sf::Event event;
+    sf::Clock clock; 
+    const float FPS = 3.0f; 
+    renderWindow.setFramerateLimit(FPS);
+    int push;
+    int sort[size];
+
+
+    while (renderWindow.isOpen()) {
+
+        while (renderWindow.pollEvent(event)) { //look for events-----------------------
+
+            //this checks if the user has clicked the little "x" button in the top right corner
+            if (event.type == sf::Event::EventType::Closed)
+                renderWindow.close();
+
+
+            for (int I = 0; I < 100; I++)
+            {
+                
+                xpos += 10;
+                push = rand() % 101;
+                sort[I] = push;
+                
+                sf::RectangleShape rect(sf::Vector2f((4), (push*2)));
+                sf::RectangleShape rect2(sf::Vector2f((4), -(push * 2)));
+                rect2.setPosition(xpos, 200);
+                rect2.setFillColor(sf::Color::Red);
+
+                rect.setPosition(sort[I]*10, 800 - push*2);
+                //rect.setPosition(sort[I]*10, 800 - push*2);
+                rect.setFillColor(sf::Color::Green);
+                renderWindow.draw(rect2);
+                renderWindow.draw(rect);
+
+            }
+
+            clock.restart();
+            //render section-----------------------------------------
+
+            //renderWindow.clear(); 
+            renderWindow.display();
+        }
+    }
+    int half = sizeof(sort) / sizeof(sort[0]);
+    Sort(sort, half);
+    cout << "Array sorted: " << endl;
+    printArray(sort, half);
+
+}
